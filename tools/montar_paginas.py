@@ -4,7 +4,7 @@ Uso: python tools/montar_paginas.py"""
 import pathlib
 
 RAIZ = pathlib.Path(__file__).resolve().parents[1]
-V = 1  # subir a cada deploy que mude CSS/JS
+V = 2  # subir a cada deploy que mude CSS/JS
 ATUAL = ' aria-current="page"'
 MENU = [("trabalhos.html", "Trabalhos"), ("ritual.html", "O Ritual"), ("cuidados.html", "Cuidados"), ("agendar.html", "Agendar")]
 
@@ -27,7 +27,7 @@ CABECA = """<!doctype html>
 <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Italiana&family=Jost:ital,wght@0,300;0,400;0,500;1,300&family=Mrs+Saint+Delafield&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,400;0,500;1,400&family=Marcellus&display=swap">
 <link rel="stylesheet" href="assets/css/estilo.css?v={v}">
 </head>
 <body>
