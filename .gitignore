@@ -1,1 +1,7 @@
 tools/__pycache__/
+_site/
+# gerados pelo GitHub Action (tools/processar.py e tools/montar_paginas.py) a partir de conteudo/
+/*.html
+assets/obras/
+assets/js/obras.js
+assets/img/abertura-*.webp

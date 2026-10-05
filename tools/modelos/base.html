@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+{% if base_href %}<base href="{{ base_href }}">
+{% endif %}<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>{{ titulo }}</title>
+<meta name="description" content="{{ descricao }}">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#f4ede4">
+<meta property="og:type" content="website">
+<meta property="og:title" content="{{ titulo }}">
+<meta property="og:description" content="{{ descricao }}">
+<meta property="og:image" content="assets/img/og.jpg">
+<link rel="icon" href="favicon.ico" sizes="48x48">
+<link rel="icon" href="assets/img/favicon-192.png" type="image/png" sizes="192x192">
+<link rel="icon" href="assets/img/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,400;0,500;1,400&family=Marcellus&display=swap">
+<link rel="stylesheet" href="assets/css/estilo.css?v={{ V }}">
+</head>
+<body data-whatsapp="{{ contato.whatsapp }}">
+<a class="pular" href="#conteudo">Pular para o conteúdo</a>
+<header class="topo">
+  <div class="wrap topo__in">
+    <a class="marca" href="index.html" aria-label="Agatha Amorim Tattoo Studio, início"><img src="assets/img/logo.webp?v={{ V }}" alt="Agatha Amorim Tattoo Studio" width="1400" height="458"></a>
+    <button class="menu-btn" aria-expanded="false" aria-controls="menu" aria-label="Abrir menu"><span></span><span></span></button>
+    <nav id="menu" class="nav" aria-label="Principal"><ul class="menu">
+      {%- for href, nome in MENU %}<li><a href="{{ href }}"{% if href == ativo %} aria-current="page"{% endif %}>{{ nome }}</a></li>{% endfor -%}
+    </ul></nav>
+  </div>
+</header>
+<main id="conteudo">
+{% block conteudo %}{% endblock %}
+</main>
+<footer class="rodape">
+  <div class="wrap">
+    <div class="rodape__in">
+      <div class="rodape__marca">
+        <a class="marca" href="index.html"><img src="assets/img/logo-branco.webp?v={{ V }}" alt="Agatha Amorim Tattoo Studio" width="1400" height="458" loading="lazy"></a>
+        <p>Fine line e ornamental, com hora marcada, em estúdio privado no Centro de Diadema.</p>
+      </div>
+      <div>
+        <h4>Páginas</h4>
+        <ul><li><a href="index.html">Início</a></li>{% for href, nome in MENU %}<li><a href="{{ href }}">{{ nome }}</a></li>{% endfor %}</ul>
+      </div>
+      <div>
+        <h4>Contato</h4>
+        <ul>
+          <li><a href="{{ contato.whatsapp | wa }}" target="_blank" rel="noopener">WhatsApp</a></li>
+          <li><a href="https://www.instagram.com/{{ contato.instagram }}/" target="_blank" rel="noopener">Instagram</a></li>
+          <li>{{ contato.endereco }} · {{ contato.complemento }}</li>
+        </ul>
+      </div>
+    </div>
+    <div class="rodape__fim">
+      <span>© <span data-ano>2026</span> Agatha Amorim Tattoo Studio</span>
+      <span>Site por <a href="https://lrgz.com.br" target="_blank" rel="noopener">L R G Z</a></span>
+    </div>
+  </div>
+</footer>
+{% if grade %}<script src="assets/js/obras.js?v={{ V }}" defer></script>
+{% endif %}<script src="assets/js/main.js?v={{ V }}" defer></script>
+</body>
+</html>

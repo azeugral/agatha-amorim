@@ -1,0 +1,29 @@
+{
+  "intro": "Os cuidados são importantes para que a gente tenha uma boa sessão e também uma melhor cicatrização.",
+  "antes": {
+    "titulo": "Antes da sessão",
+    "subtitulo": "Na semana e no dia anterior.",
+    "itens": [
+      "Descanse bem no dia anterior à sessão.",
+      "Beba bastante água e hidrate bem a região que vamos tatuar na semana da sessão. Isso ajuda tanto durante a tattoo quanto na cicatrização.",
+      "Procure se alimentar antes da sessão.",
+      "Evite o uso de álcool no dia anterior.",
+      "Use roupas confortáveis e que facilitem o acesso à área que vamos tatuar."
+    ]
+  },
+  "depois": {
+    "titulo": "Depois da sessão",
+    "subtitulo": "Até a pele cicatrizar, e depois dela.",
+    "itens": [
+      "Esteja sempre com as mãos limpas ao tocar na tatuagem.",
+      "Higienize a área tatuada com sabonete neutro.",
+      "Use a pomada indicada para cicatrização, em camada fina, cerca de 4 vezes ao dia, a começar do terceiro dia pós tattoo.",
+      "Evite sol, piscina, mar, cachoeiras e sauna durante 20 dias.",
+      "Evite bebidas alcoólicas e alimentos como carne de porco, chocolate, frutos do mar, processados e embutidos, pois aumentam o risco de inflamação.",
+      "Evite exercício físico nos primeiros 7 dias após a tattoo.",
+      "Não coce e não remova as casquinhas: elas fazem parte do processo de cicatrização.",
+      "Mantenha a pele hidratada e protegida com protetor solar após a cicatrização."
+    ]
+  },
+  "fecho": "Todos os cuidados ajudam a ter uma melhor cicatrização e duração da arte na sua pele. Ficou alguma dúvida? É só me chamar."
+}

@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% set titulo = "Cuidados | Agatha Amorim Tattoo Studio" %}
+{% set descricao = "Cuidados antes e depois da tatuagem para uma boa sessão, uma boa cicatrização e uma arte que dura na pele." %}
+{% set ativo = "cuidados.html" %}
+{% block conteudo %}
+<section class="secao secao--pagina">
+  <div class="wrap">
+    <div class="pagina__topo">
+      <p class="rotulo">Cuidados</p>
+      <h1>Antes e depois da tattoo</h1>
+      <p>{{ cuidados.intro }}</p>
+    </div>
+    {%- for bloco in [cuidados.antes, cuidados.depois] %}
+
+    <div class="cuidado revela">
+      <div class="cuidado__cab">
+        <h2>{{ bloco.titulo }}</h2>
+        {% if bloco.subtitulo %}<p>{{ bloco.subtitulo }}</p>{% endif %}
+      </div>
+      <ul class="cuidado__lista">
+        {%- for item in bloco.itens %}
+        <li>{{ item }}</li>
+        {%- endfor %}
+      </ul>
+    </div>
+    {%- endfor %}
+
+    <div class="fecho revela">
+      <p>{{ cuidados.fecho }}</p>
+      <a class="btn btn--vazado" href="{{ contato.whatsapp | wa }}" target="_blank" rel="noopener">Falar no WhatsApp</a>
+    </div>
+  </div>
+</section>
+{% endblock %}

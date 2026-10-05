@@ -1,0 +1,192 @@
+# yaml-language-server: $schema=https://unpkg.com/@sveltia/cms/schema/sveltia-cms.json
+# Painel do site (Sveltia CMS). Cada "Publicar" vira um commit no main e o GitHub Action
+# .github/workflows/site.yml monta e publica o site em 1 a 2 minutos.
+
+backend:
+  name: github
+  repo: azeugral/agatha-amorim
+  branch: main
+  # base_url: https://SEU-AUTENTICADOR.workers.dev   # liga o botão "Entrar com GitHub" (ver README)
+  commit_messages:
+    create: "Painel: cria {{path}}"
+    update: "Painel: atualiza {{path}}"
+    delete: "Painel: remove {{path}}"
+    uploadMedia: "Painel: envia {{path}}"
+    deleteMedia: "Painel: apaga {{path}}"
+
+site_url: https://azeugral.github.io/agatha-amorim/
+display_url: https://azeugral.github.io/agatha-amorim/
+logo_url: ../assets/img/favicon-192.png
+
+media_folder: conteudo/fotos
+public_folder: /conteudo/fotos
+
+media_libraries:
+  default:
+    config:
+      max_file_size: 15000000
+      transformations:
+        raster_image:
+          format: webp
+          quality: 88
+          width: 2048
+          height: 2048
+
+collections:
+  - name: trabalhos
+    label: Trabalhos
+    icon: photo_library
+    description: As fotos da página Trabalhos. A ordem aqui é a ordem do site; as 8 primeiras aparecem na home.
+    editor:
+      preview: false
+    files:
+      - name: trabalhos
+        label: Trabalhos
+        file: conteudo/trabalhos.json
+        icon: photo_library
+        fields:
+          - name: trabalhos
+            label: Trabalhos
+            label_singular: Trabalho
+            widget: list
+            add_to_top: true
+            collapsed: true
+            summary: "{{titulo}} · {{estilo}}"
+            thumbnail: foto
+            fields:
+              - { name: foto, label: Foto, widget: image, hint: "Foto da tattoo. Na grade ela aparece cortada em 4:5 (vertical); ao tocar, abre inteira." }
+              - { name: titulo, label: Título, widget: string, maxlength: 40, hint: "Curto, aparece na legenda. Ex.: Floral na coluna" }
+              - name: estilo
+                label: Estilo
+                widget: select
+                default: fineline
+                options:
+                  - { label: Fine line, value: fineline }
+                  - { label: Ornamental, value: ornamental }
+                  - { label: Escrita, value: escrita }
+
+  - name: paginas
+    label: Textos do site
+    icon: article
+    editor:
+      preview: false
+    files:
+      - name: contato
+        label: Contato e horários
+        file: conteudo/contato.json
+        icon: call
+        fields:
+          - { name: whatsapp, label: WhatsApp, widget: string, hint: "Com DDI e DDD, só números. Ex.: 5511994024060" }
+          - { name: instagram, label: Instagram, widget: string, hint: "Só o usuário, sem @." }
+          - { name: endereco, label: Endereço, widget: string, maxlength: 60 }
+          - { name: complemento, label: Complemento, widget: string, maxlength: 60, hint: "Sala, andar, bairro e cidade. Use · para separar." }
+          - { name: atendimento, label: Atendimento, widget: string, maxlength: 60 }
+          - { name: horarios, label: Horários, widget: string, required: false, maxlength: 80, hint: "Ex.: Terça a sábado, das 10h às 19h. Em branco, aparece 'a preencher'." }
+
+      - name: inicio
+        label: Início
+        file: conteudo/inicio.json
+        icon: home
+        fields:
+          - name: abertura
+            label: Abertura
+            widget: object
+            fields:
+              - { name: titulo, label: Título, widget: string, maxlength: 40 }
+              - { name: frase, label: Frase, widget: text, maxlength: 220 }
+              - { name: foto, label: Foto, widget: image, hint: "Sua foto no arco. Ela é cortada na vertical (3:4), com o rosto no terço de cima." }
+          - name: estilos
+            label: Estilos
+            widget: object
+            fields:
+              - { name: titulo, label: Título, widget: string, maxlength: 40 }
+              - { name: texto, label: Texto, widget: text, maxlength: 160 }
+              - name: fineline
+                label: Fine line
+                widget: object
+                fields:
+                  - { name: texto, label: Texto, widget: text, maxlength: 140 }
+                  - { name: foto, label: Foto, widget: image }
+              - name: ornamental
+                label: Ornamental
+                widget: object
+                fields:
+                  - { name: texto, label: Texto, widget: text, maxlength: 140 }
+                  - { name: foto, label: Foto, widget: image }
+          - name: apresentacao
+            label: Quem tatua
+            widget: object
+            fields:
+              - { name: titulo, label: Título, widget: string, maxlength: 40 }
+              - { name: destaque, label: Frase em destaque, widget: string, required: false, maxlength: 60 }
+              - { name: paragrafos, label: Parágrafos, label_singular: Parágrafo, widget: list, field: { name: texto, label: Texto, widget: text } }
+          - name: faixa_ritual
+            label: Faixa do ritual
+            widget: object
+            fields:
+              - { name: titulo, label: Título, widget: string, maxlength: 40 }
+              - { name: texto, label: Texto, widget: text, maxlength: 260 }
+          - name: passos
+            label: Como agendar
+            widget: object
+            fields:
+              - { name: titulo, label: Título, widget: string, maxlength: 40 }
+              - name: itens
+                label: Passos
+                label_singular: Passo
+                widget: list
+                max: 4
+                summary: "{{titulo}}"
+                fields:
+                  - { name: titulo, label: Título, widget: string, maxlength: 30 }
+                  - { name: texto, label: Texto, widget: text, maxlength: 160 }
+          - name: disponiveis
+            label: Artes disponíveis
+            widget: object
+            fields:
+              - { name: titulo, label: Título, widget: string, maxlength: 40 }
+              - { name: texto, label: Texto, widget: text, maxlength: 200 }
+
+      - name: ritual
+        label: O Ritual
+        file: conteudo/ritual.json
+        icon: spa
+        fields:
+          - { name: titulo, label: Título, widget: string, maxlength: 50 }
+          - { name: paragrafos, label: O que é, label_singular: Parágrafo, widget: list, field: { name: texto, label: Texto, widget: text } }
+          - { name: processo_titulo, label: Título do processo, widget: string, maxlength: 40 }
+          - { name: processo_texto, label: Texto do processo, widget: text, maxlength: 160 }
+          - name: etapas
+            label: Etapas
+            label_singular: Etapa
+            widget: list
+            summary: "{{titulo}}"
+            fields:
+              - { name: titulo, label: Título, widget: string, maxlength: 30 }
+              - { name: texto, label: Texto, widget: text, maxlength: 220 }
+          - { name: manifesto, label: Frase final, widget: text, maxlength: 160 }
+          - { name: manifesto_destaque, label: Frase final em destaque, widget: string, required: false, maxlength: 50 }
+          - { name: chamado_titulo, label: Chamado, widget: string, maxlength: 40 }
+          - { name: chamado_texto, label: Texto do chamado, widget: text, maxlength: 160 }
+
+      - name: cuidados
+        label: Cuidados
+        file: conteudo/cuidados.json
+        icon: healing
+        fields:
+          - { name: intro, label: Introdução, widget: text, maxlength: 220 }
+          - name: antes
+            label: Antes da sessão
+            widget: object
+            fields:
+              - { name: titulo, label: Título, widget: string, maxlength: 30 }
+              - { name: subtitulo, label: Subtítulo, widget: string, required: false, maxlength: 60 }
+              - { name: itens, label: Cuidados, label_singular: Cuidado, widget: list, field: { name: texto, label: Texto, widget: text } }
+          - name: depois
+            label: Depois da sessão
+            widget: object
+            fields:
+              - { name: titulo, label: Título, widget: string, maxlength: 30 }
+              - { name: subtitulo, label: Subtítulo, widget: string, required: false, maxlength: 60 }
+              - { name: itens, label: Cuidados, label_singular: Cuidado, widget: list, field: { name: texto, label: Texto, widget: text } }
+          - { name: fecho, label: Fechamento, widget: text, maxlength: 220 }

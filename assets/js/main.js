@@ -1,7 +1,7 @@
 // Agatha Amorim Tattoo Studio — comportamento comum às páginas
+// o número vem de conteudo/contato.json (editável no painel), gravado no <body data-whatsapp>
 const CONFIG = {
-  whatsapp: "5511994024060",
-  instagram: "agathaamorim.tattoo",
+  whatsapp: (document.body.dataset.whatsapp || "").replace(/\D/g, ""),
 };
 
 const ESTILOS = { fineline: "Fine line", ornamental: "Ornamental", escrita: "Escrita" };

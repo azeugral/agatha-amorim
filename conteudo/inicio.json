@@ -1,0 +1,57 @@
+{
+  "abertura": {
+    "titulo": "Arte com afeto",
+    "frase": "Tatuagens orgânicas, simbólicas e delicadas, criadas a partir da sua intenção. Estúdio privado no Centro de Diadema, com hora marcada.",
+    "foto": "/conteudo/fotos/agatha.webp"
+  },
+  "estilos": {
+    "titulo": "O que eu tatuo",
+    "texto": "Traço fino e ornamentos, em preto, com desenho feito para o seu corpo.",
+    "fineline": {
+      "texto": "Linhas finas para florais, bichos, escritas e homenagens. Leve na pele e cheia de detalhe.",
+      "foto": "/conteudo/fotos/peonias-ombro.webp"
+    },
+    "ornamental": {
+      "texto": "Rendados, mandalas, sóis e fechamentos que acompanham o desenho do corpo.",
+      "foto": "/conteudo/fotos/lotus.webp"
+    }
+  },
+  "apresentacao": {
+    "titulo": "Oie! Eu sou a Agatha",
+    "destaque": "Tenho 28 anos e tatuo há 6.",
+    "paragrafos": [
+      "Minha primeira paixão foi a arquitetura, um sonho de infância que segui com dedicação. Me formei, atuei na área por alguns anos, mas foi quando a tatuagem entrou na minha vida que algo dentro de mim despertou. Foi como se, pela primeira vez, eu estivesse realmente no meu caminho. Escolhi segui-lo com o coração aberto e a alma alinhada ao que pulsa em mim.",
+      "A natureza sempre foi meu refúgio, minha fonte de cura e inspiração. É dela que nascem a maioria das minhas artes: orgânicas, simbólicas, vivas.",
+      "Hoje, meu trabalho vai além da tatuagem. Ele é também um ritual. Um espaço seguro onde acolho intenções, escuto com presença, crio com propósito e tatuo com amor. Uso a arte como ponte para o autoconhecimento, o cuidado e a reconexão com o sagrado que habita em cada um de nós."
+    ]
+  },
+  "faixa_ritual": {
+    "titulo": "Mais que tatuar",
+    "texto": "É ouvir sua história, desejo e intenção, e transformá-la em arte. Antes da aplicação da arte na pele, um momento de pausa, escuta, presença e conexão, como um retorno a si."
+  },
+  "passos": {
+    "titulo": "Da intenção à pele",
+    "itens": [
+      {
+        "titulo": "Conte sua ideia",
+        "texto": "Mande a intenção, o local do corpo e as referências pelo formulário. Pode ser uma arte única ou uma das disponíveis."
+      },
+      {
+        "titulo": "Orçamento",
+        "texto": "Com a ideia em mãos, eu passo o valor e as datas livres pelo WhatsApp."
+      },
+      {
+        "titulo": "Criação",
+        "texto": "O desenho é pensado para o seu corpo e para o significado que você quer levar."
+      },
+      {
+        "titulo": "Sessão",
+        "texto": "Dia marcado no estúdio. Antes e depois, é só seguir os cuidados."
+      }
+    ]
+  },
+  "disponiveis": {
+    "titulo": "Artes disponíveis",
+    "texto": "Tenho desenhos prontos, criados por mim, esperando a pele certa. Eles ficam no destaque Disponíveis do Instagram."
+  }
+}

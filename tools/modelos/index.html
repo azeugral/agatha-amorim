@@ -1,0 +1,131 @@
+{% extends "base.html" %}
+{% set titulo = "Agatha Amorim Tattoo Studio | Fine line e ornamental em Diadema" %}
+{% set descricao = "Tatuagens fine line e ornamentais, orgânicas e simbólicas, em estúdio privado no Centro de Diadema - SP. Agende pelo WhatsApp." %}
+{% set grade = true %}
+{% block conteudo %}
+{%- set a = inicio.abertura %}
+<section class="abertura">
+  <div class="wrap abertura__in">
+    <div class="abertura__txt">
+      <p class="rotulo">Fine line <span class="estrela" aria-hidden="true">✦</span> Ornamental</p>
+      <h1>{{ a.titulo }}</h1>
+      <p class="abertura__frase">{{ a.frase }}</p>
+      <div class="botoes">
+        <a class="btn" href="agendar.html">Agendar minha tattoo</a>
+        <a class="btn btn--vazado" href="trabalhos.html">Ver trabalhos</a>
+      </div>
+    </div>
+    <div class="abertura__foto">
+      <svg class="raios" viewBox="0 0 200 200" aria-hidden="true"><g></g></svg>
+      <div class="arco"><img src="{{ a.foto | abertura }}" alt="Agatha Amorim" width="810" height="1080" fetchpriority="high"></div>
+    </div>
+  </div>
+</section>
+
+{%- set e = inicio.estilos %}
+<section class="secao">
+  <div class="wrap">
+    <div class="secao__topo revela">
+      <div>
+        <p class="rotulo">Estilos</p>
+        <h2>{{ e.titulo }}</h2>
+      </div>
+      <p>{{ e.texto }}</p>
+    </div>
+    <div class="estilos revela">
+      {%- for chave, nome in [("fineline", "Fine line"), ("ornamental", "Ornamental")] %}
+      <a class="estilo" href="trabalhos.html#{{ chave }}">
+        <div class="estilo__img"><img src="{{ e[chave].foto | obra }}" alt="Tattoo {{ nome | lower }}" width="800" height="1000" loading="lazy"></div>
+        <div class="estilo__txt"><h3>{{ nome }}</h3><p>{{ e[chave].texto }}</p><span class="seta">Ver {{ nome | lower }}</span></div>
+      </a>
+      {%- endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="secao secao--areia">
+  <div class="wrap">
+    <div class="secao__topo revela">
+      <div>
+        <p class="rotulo">Trabalhos</p>
+        <h2>Feitos recentemente</h2>
+      </div>
+      <a class="btn btn--vazado" href="trabalhos.html">Ver todos</a>
+    </div>
+    <div class="grade grade--home revela" data-grade data-limite="8"></div>
+  </div>
+</section>
+
+{%- set s = inicio.apresentacao %}
+<section class="secao" id="sobre">
+  <div class="wrap apresenta">
+    <div class="apresenta__cab revela">
+      <p class="rotulo">Quem tatua</p>
+      <h2>{{ s.titulo }}</h2>
+      {% if s.destaque %}<p class="destaque">{{ s.destaque }}</p>{% endif %}
+      <a class="btn btn--vazado" href="https://www.instagram.com/{{ contato.instagram }}/" target="_blank" rel="noopener">@{{ contato.instagram }}</a>
+    </div>
+    <div class="apresenta__txt revela">
+      {%- for p in s.paragrafos %}
+      <p>{{ p }}</p>
+      {%- endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="faixa faixa--pessego">
+  <svg class="raios raios--faixa" viewBox="0 0 200 200" aria-hidden="true"><g></g></svg>
+  <div class="wrap faixa__in revela">
+    <p class="caixa">Ritual de tattoo</p>
+    <h2>{{ inicio.faixa_ritual.titulo }}</h2>
+    <blockquote>
+      <p>{{ inicio.faixa_ritual.texto }}</p>
+    </blockquote>
+    <a class="btn btn--claro" href="ritual.html">Conhecer o ritual</a>
+  </div>
+</section>
+
+<section class="secao">
+  <div class="wrap">
+    <div class="secao__topo revela">
+      <div>
+        <p class="rotulo">Como agendar</p>
+        <h2>{{ inicio.passos.titulo }}</h2>
+      </div>
+    </div>
+    <ol class="passos revela">
+      {%- for p in inicio.passos.itens %}
+      <li><span class="passo__n" aria-hidden="true">✦</span><h3>{{ p.titulo }}</h3><p>{{ p.texto }}</p></li>
+      {%- endfor %}
+    </ol>
+    <div class="disponiveis revela">
+      <div>
+        <h3>{{ inicio.disponiveis.titulo }}</h3>
+        <p>{{ inicio.disponiveis.texto }}</p>
+      </div>
+      <a class="btn btn--vazado" href="https://www.instagram.com/{{ contato.instagram }}/" target="_blank" rel="noopener">Ver no Instagram</a>
+    </div>
+  </div>
+</section>
+
+<section class="secao secao--areia" id="onde">
+  <div class="wrap onde">
+    <div class="revela">
+      <p class="rotulo">Onde fica</p>
+      <h2>Estúdio privado em Diadema</h2>
+      <dl>
+        <div><dt>Endereço</dt><dd>{{ contato.endereco }}<br>{{ contato.complemento }}</dd></div>
+        <div><dt>Atendimento</dt><dd>{{ contato.atendimento }}</dd></div>
+        <div><dt>Horários</dt><dd>{% if contato.horarios %}{{ contato.horarios }}{% else %}<span class="a-preencher">a preencher</span>{% endif %}</dd></div>
+      </dl>
+      <div class="botoes">
+        <a class="btn" href="agendar.html">Agendar</a>
+        <a class="btn btn--vazado" href="https://www.google.com/maps/search/?api=1&amp;query={{ mapa }}" target="_blank" rel="noopener">Abrir no mapa</a>
+      </div>
+    </div>
+    <div class="onde__mapa revela">
+      <iframe title="Mapa do estúdio, {{ contato.endereco }}" src="https://maps.google.com/maps?q={{ mapa }}&amp;z=16&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </div>
+</section>
+{% endblock %}

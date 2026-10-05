@@ -1,0 +1,65 @@
+# Monta o site a partir de conteudo/ (o que o painel /admin edita) e publica no GitHub Pages.
+# Roda a cada push no main, inclusive os commits que o painel faz ao publicar.
+name: Montar e publicar o site
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  montar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: tools/requirements.txt
+
+      - run: pip install -r tools/requirements.txt
+
+      # fotos já convertidas em builds anteriores (o processar.py só converte as novas)
+      - uses: actions/cache@v4
+        with:
+          path: |
+            assets/obras
+            assets/img/abertura-*.webp
+          key: obras-${{ hashFiles('conteudo/fotos/**', 'tools/processar.py') }}
+          restore-keys: obras-
+
+      - name: Converter fotos
+        run: python tools/processar.py
+
+      - name: Montar páginas
+        run: python tools/montar_paginas.py
+
+      - name: Separar o que vai ao ar
+        run: |
+          mkdir _site
+          cp -r *.html favicon.ico robots.txt assets admin _site/
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  publicar:
+    needs: montar
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - id: deploy
+        uses: actions/deploy-pages@v4

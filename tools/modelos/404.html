@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% set titulo = "Página não encontrada | Agatha Amorim Tattoo Studio" %}
+{% set descricao = "Esta página não existe." %}
+{% set base_href = BASE_404 %}
+{% block conteudo %}
+<section class="secao secao--pagina erro">
+  <div class="wrap">
+    <svg class="raios" viewBox="0 0 200 200" aria-hidden="true"><g></g></svg>
+    <p class="caixa">Erro 404</p>
+    <h1>Essa página não existe</h1>
+    <p>O link pode ter mudado. Volte para o início ou veja os trabalhos.</p>
+    <div class="botoes">
+      <a class="btn" href="index.html">Início</a>
+      <a class="btn btn--vazado" href="trabalhos.html">Trabalhos</a>
+    </div>
+  </div>
+</section>
+{% endblock %}
