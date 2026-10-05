@@ -4,7 +4,7 @@ const CONFIG = {
   instagram: "agathaamorim.tattoo",
 };
 
-const ESTILOS = { fineline: "Fine line", ornamental: "Ornamental" };
+const ESTILOS = { fineline: "Fine line", ornamental: "Ornamental", escrita: "Escrita" };
 const reduzido = matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 /* ---------- contato ---------- */
@@ -72,7 +72,7 @@ if (!reduzido) document.querySelectorAll(".abertura__txt > *").forEach((el) => e
 function cartao(o, i) {
   const est = ESTILOS[o.estilo];
   return `<figure class="obra" role="button" tabindex="0" data-i="${i}" aria-label="${o.titulo}, ${est}. Ampliar">
-    <img src="assets/obras/${o.slug}-t.webp?v=1" alt="Tattoo ${o.titulo}, ${est}" width="${o.w}" height="${o.h}" loading="lazy" decoding="async">
+    <img src="assets/obras/${o.slug}-t.webp?v=2" alt="Tattoo ${o.titulo}, ${est}" width="800" height="1000" loading="lazy" decoding="async">
     <figcaption>${o.titulo} · ${est}</figcaption>
   </figure>`;
 }
@@ -144,7 +144,7 @@ function ampliar(lista, i) {
     img.style.opacity = 0;
     const nova = new Image();
     nova.onload = () => { img.src = nova.src; img.alt = `Tattoo ${o.titulo}`; img.style.opacity = 1; };
-    nova.src = `assets/obras/${o.slug}.webp?v=1`;
+    nova.src = `assets/obras/${o.slug}.webp?v=2`;
     leg.textContent = `${o.titulo} · ${ESTILOS[o.estilo]} · ${atual + 1}/${lista.length}`;
   };
   const fechar = () => {

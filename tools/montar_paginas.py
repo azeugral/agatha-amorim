@@ -4,7 +4,7 @@ Uso: python tools/montar_paginas.py"""
 import pathlib
 
 RAIZ = pathlib.Path(__file__).resolve().parents[1]
-V = 2  # subir a cada deploy que mude CSS/JS
+V = 3  # subir a cada deploy que mude CSS/JS
 ATUAL = ' aria-current="page"'
 MENU = [("trabalhos.html", "Trabalhos"), ("ritual.html", "O Ritual"), ("cuidados.html", "Cuidados"), ("agendar.html", "Agendar")]
 
