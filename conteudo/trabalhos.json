@@ -1,11 +1,6 @@
 {
   "trabalhos": [
     {
-      "foto": "/conteudo/fotos/WhatsApp Image 2026-05-26 at aa.webp",
-      "titulo": "Teste Cachorrinho",
-      "estilo": "fineline"
-    },
-    {
       "foto": "/conteudo/fotos/sol-ornamental.webp",
       "titulo": "Sol ornamental",
       "estilo": "ornamental"
